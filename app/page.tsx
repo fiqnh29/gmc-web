@@ -114,6 +114,60 @@ export default function Page() {
       </section>
 
       <FeaturesCarousel slides={slides} />
+
+      <section className="mx-auto w-full max-w-7xl px-6 py-24 md:px-12">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+          {[
+            {
+              title: "Professional Line",
+              description:
+                "Dirancang untuk kebutuhan profesional dengan performa audio yang lebih kuat, stabil, dan presisi di setiap detail suara.",
+              image: "/profesional-line-speaker.png",
+            },
+            {
+              title: "Powered Speaker",
+              description:
+                "Speaker aktif dengan amplifier terintegrasi, menghadirkan suara jernih, praktis digunakan, dan siap digunakan kapan saja tanpa perangkat tambahan.",
+              image: "/powered-speaker.png",
+            },
+            {
+              title: "Multimedia Speaker",
+              description:
+                "Dirancang untuk kebutuhan hiburan digital, menghadirkan suara jernih dan seimbang untuk musik, film, hingga gaming dalam satu perangkat praktis.",
+              image: "/multimedia-speaker.png",
+            },
+            {
+              title: "Compact Speaker",
+              description:
+                "Desain ringkas dengan performa maksimal, menghadirkan suara jernih dan bertenaga dalam ukuran yang praktis untuk berbagai kebutuhan.",
+              image: "/compact-speaker.png",
+            },
+          ].map((cat) => (
+            <div
+              key={cat.title}
+              className="group relative flex min-h-55 items-center justify-between overflow-hidden rounded-3xl border border-white/5 bg-white/4 p-8 transition-all duration-300 hover:border-white/10 hover:bg-white/6"
+            >
+              <div className="flex flex-col pr-36 sm:pr-44">
+                <h3 className="mb-2 text-lg font-bold text-white">
+                  {cat.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-white/50">
+                  {cat.description}
+                </p>
+              </div>
+              <div className="pointer-events-none absolute top-0 right-0 bottom-0 w-36 select-none sm:w-44">
+                <Image
+                  src={cat.image}
+                  alt={cat.title}
+                  fill
+                  className="object-contain object-bottom-right transition-transform duration-500 group-hover:scale-105"
+                  sizes="(max-width: 768px) 150px, 180px"
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   )
 }
