@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 
 export function Footer() {
   const handleLogoClick = () => {
@@ -34,16 +35,15 @@ export function Footer() {
             <div className="mt-12 flex flex-wrap items-center justify-between gap-6 border-b border-white/5 pb-8 md:border-none md:pb-0">
               <div
                 onClick={handleLogoClick}
-                className="group flex cursor-pointer items-center gap-2.5"
+                className="cursor-pointer transition-transform duration-300 hover:scale-105"
               >
-                <div className="flex h-7 w-7 items-center justify-center rounded-full bg-[#274bd1] shadow-lg shadow-blue-600/20 transition-transform duration-300 group-hover:scale-105">
-                  <span className="text-[10px] font-black text-white select-none">
-                    gmc
-                  </span>
-                </div>
-                <span className="text-lg font-black tracking-wider text-white">
-                  GMC
-                </span>
+                <Image
+                  src="/logo.png"
+                  alt="GMC Logo"
+                  width={96}
+                  height={28}
+                  className="h-7 w-auto object-contain"
+                />
               </div>
 
               <div className="flex items-center gap-5">

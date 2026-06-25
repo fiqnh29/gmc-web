@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Menu, Search, X } from "lucide-react"
 
 export function Navbar() {
@@ -46,16 +47,16 @@ export function Navbar() {
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 md:px-12">
           <div
             onClick={handleLogoClick}
-            className="group flex cursor-pointer items-center gap-2.5"
+            className="cursor-pointer transition-transform duration-300 hover:scale-105"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#274bd1] shadow-lg shadow-blue-600/20 transition-transform duration-300 group-hover:scale-105">
-              <span className="text-xs font-black text-white select-none">
-                gmc
-              </span>
-            </div>
-            <span className="text-xl font-black tracking-wider text-white">
-              GMC
-            </span>
+            <Image
+              src="/logo.png"
+              alt="GMC Logo"
+              width={109}
+              height={32}
+              priority
+              className="h-8 w-auto object-contain"
+            />
           </div>
 
           <nav className="mr-auto hidden items-center gap-8 pl-12 md:flex">
