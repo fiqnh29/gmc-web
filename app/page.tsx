@@ -1,6 +1,9 @@
 import { Navbar } from "@/components/navbar"
 import { FeaturesCarousel } from "@/components/features-carousel"
+import { ProductSection } from "@/components/product-section"
+import { Footer } from "@/components/footer"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function Page() {
   const speakerPills = [
@@ -69,12 +72,12 @@ export default function Page() {
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4">
-                <button className="cursor-pointer rounded-full bg-linear-to-r from-[#274bd1] to-[#4f46e5] px-8 py-3.5 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-600/30">
-                  Lihat Detail
-                </button>
-                <button className="cursor-pointer rounded-full border border-white/15 bg-white/3 px-8 py-3.5 text-sm font-bold tracking-wide text-white backdrop-blur-md transition-all duration-300 hover:border-white/30 hover:bg-white/8">
-                  Spesifikasi
-                </button>
+                <Link
+                  href="/#produk"
+                  className="cursor-pointer rounded-full bg-linear-to-r from-[#274bd1] to-[#4f46e5] px-8 py-3.5 text-sm font-bold tracking-wide text-white transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-600/30"
+                >
+                  Lihat Semua Produk
+                </Link>
               </div>
             </div>
 
@@ -122,32 +125,32 @@ export default function Page() {
               title: "Professional Line",
               description:
                 "Dirancang untuk kebutuhan profesional dengan performa audio yang lebih kuat, stabil, dan presisi di setiap detail suara.",
-              image: "/profesional-line-speaker.png",
+              image: "/products/speakers/profesional-line-speaker.png",
             },
             {
               title: "Powered Speaker",
               description:
                 "Speaker aktif dengan amplifier terintegrasi, menghadirkan suara jernih, praktis digunakan, dan siap digunakan kapan saja tanpa perangkat tambahan.",
-              image: "/powered-speaker.png",
+              image: "/products/speakers/powered-speaker.png",
             },
             {
               title: "Multimedia Speaker",
               description:
                 "Dirancang untuk kebutuhan hiburan digital, menghadirkan suara jernih dan seimbang untuk musik, film, hingga gaming dalam satu perangkat praktis.",
-              image: "/multimedia-speaker.png",
+              image: "/products/speakers/multimedia-speaker.png",
             },
             {
               title: "Compact Speaker",
               description:
                 "Desain ringkas dengan performa maksimal, menghadirkan suara jernih dan bertenaga dalam ukuran yang praktis untuk berbagai kebutuhan.",
-              image: "/compact-speaker.png",
+              image: "/products/speakers/compact-speaker.png",
             },
           ].map((cat) => (
             <div
               key={cat.title}
-              className="group relative flex min-h-55 items-center justify-between overflow-hidden rounded-3xl border border-white/5 bg-white/4 p-8 transition-all duration-300 hover:border-white/10 hover:bg-white/6"
+              className="group relative flex min-h-[220px] items-center justify-between overflow-hidden rounded-3xl border border-white/5 bg-white/4 p-6 transition-all duration-300 hover:border-white/10 hover:bg-white/6 sm:min-h-[200px] sm:p-8"
             >
-              <div className="flex flex-col pr-36 sm:pr-44">
+              <div className="mb-28 flex flex-col pr-0 sm:mb-0 sm:pr-40">
                 <h3 className="mb-2 text-lg font-bold text-white">
                   {cat.title}
                 </h3>
@@ -155,19 +158,22 @@ export default function Page() {
                   {cat.description}
                 </p>
               </div>
-              <div className="pointer-events-none absolute top-0 right-0 bottom-0 w-36 select-none sm:w-44">
+              <div className="pointer-events-none absolute right-0 bottom-0 h-28 w-28 select-none sm:top-0 sm:bottom-0 sm:h-full sm:w-40">
                 <Image
                   src={cat.image}
                   alt={cat.title}
                   fill
                   className="object-contain object-bottom-right transition-transform duration-500 group-hover:scale-105"
-                  sizes="(max-width: 768px) 150px, 180px"
+                  sizes="(max-width: 640px) 112px, (max-width: 768px) 160px, 180px"
                 />
               </div>
             </div>
           ))}
         </div>
       </section>
+
+      <ProductSection />
+      <Footer />
     </main>
   )
 }

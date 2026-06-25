@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 
@@ -16,6 +16,20 @@ interface FeaturesCarouselProps {
 
 export function FeaturesCarousel({ slides }: FeaturesCarouselProps) {
   const [currentSlide, setCurrentSlide] = useState(0)
+  const [slideWidth, setSlideWidth] = useState(0)
+  const slideRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!slideRef.current) return
+
+    const handleResize = () => {
+      setSlideWidth(slideRef.current?.offsetWidth || 0)
+    }
+
+    handleResize()
+    window.addEventListener("resize", handleResize)
+    return () => window.removeEventListener("resize", handleResize)
+  }, [])
 
   const nextSlide = () => {
     if (currentSlide < slides.length - 1) {
@@ -82,7 +96,7 @@ export function FeaturesCarousel({ slides }: FeaturesCarouselProps) {
             <div
               className="flex gap-6 transition-transform duration-500 ease-out"
               style={{
-                transform: `translateX(calc(-${currentSlide * 100}% - ${currentSlide * 24}px))`,
+                transform: `translateX(-${currentSlide * (slideWidth + 24)}px)`,
               }}
             >
               {slides.map((slide, idx) => {
@@ -90,6 +104,7 @@ export function FeaturesCarousel({ slides }: FeaturesCarouselProps) {
                 return (
                   <div
                     key={slide.title}
+                    ref={idx === 0 ? slideRef : null}
                     className={`relative aspect-4/3 w-full shrink-0 cursor-pointer overflow-hidden rounded-3xl border transition-all duration-500 sm:aspect-video md:w-125 ${
                       isActive
                         ? "scale-100 border-white/20 opacity-100 shadow-[0_20px_50px_rgba(0,0,0,0.8)]"

@@ -9,11 +9,45 @@ export function Navbar() {
   const menuLinks = ["SPEAKER", "KIPAS", "KOMPOR", "GRILL"]
   const rightLinks = ["TENTANG KAMI", "KONTAK"]
 
+  const handleMenuClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    link: string
+  ) => {
+    e.preventDefault()
+    window.history.pushState(null, "", `#${link.toLowerCase()}`)
+    window.dispatchEvent(new CustomEvent("select-category", { detail: link }))
+    const element = document.getElementById("produk")
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" })
+    }
+    setIsMobileMenuOpen(false)
+  }
+
+  const handleLogoClick = () => {
+    window.history.pushState(null, "", window.location.pathname)
+    window.scrollTo({ top: 0, behavior: "smooth" })
+    setIsMobileMenuOpen(false)
+  }
+
+  const handleSearchClick = () => {
+    const searchInput = document.getElementById("cari-produk")
+    if (searchInput) {
+      searchInput.scrollIntoView({ behavior: "smooth", block: "center" })
+      setTimeout(() => {
+        searchInput.focus()
+      }, 300)
+    }
+    setIsMobileMenuOpen(false)
+  }
+
   return (
     <>
       <header className="animate-fade-down relative z-50 w-full">
         <div className="mx-auto flex h-24 max-w-7xl items-center justify-between px-6 md:px-12">
-          <div className="group flex cursor-pointer items-center gap-2.5">
+          <div
+            onClick={handleLogoClick}
+            className="group flex cursor-pointer items-center gap-2.5"
+          >
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#274bd1] shadow-lg shadow-blue-600/20 transition-transform duration-300 group-hover:scale-105">
               <span className="text-xs font-black text-white select-none">
                 gmc
@@ -29,6 +63,7 @@ export function Navbar() {
               <a
                 key={link}
                 href={`#${link.toLowerCase()}`}
+                onClick={(e) => handleMenuClick(e, link)}
                 className="relative py-1 text-xs font-bold tracking-widest text-white/70 transition-all duration-300 after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-white after:transition-all after:duration-300 hover:text-white hover:after:w-full"
               >
                 {link}
@@ -47,7 +82,10 @@ export function Navbar() {
               </a>
             ))}
 
-            <button className="hover-glow flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 text-white/80 transition-all duration-300 hover:border-white/50 hover:bg-white/10 hover:text-white">
+            <button
+              onClick={handleSearchClick}
+              className="hover-glow flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-white/20 text-white/80 transition-all duration-300 hover:border-white/50 hover:bg-white/10 hover:text-white"
+            >
               <Search size={14} strokeWidth={2.5} />
             </button>
           </div>
@@ -74,7 +112,7 @@ export function Navbar() {
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => handleMenuClick(e, link)}
               className="text-lg font-bold tracking-widest text-white/80 transition-all duration-300 hover:text-white"
             >
               {link}
