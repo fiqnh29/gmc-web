@@ -27,7 +27,7 @@ const PRODUCTS_DATA: Product[] = [
     name: "Speaker 899 Q",
     category: "Speaker",
     subCategory: "Professional Line",
-    image: "/profesional-line-speaker.png",
+    image: "/products/speakers/profesional-line-speaker.png",
     price: "Rp 1.899.000",
     description:
       "Speaker active professional GMC 899 Q dirancang untuk kebutuhan panggung, rapat besar, maupun karaoke keluarga dengan kualitas suara dahsyat dan bass super mantap.",
@@ -47,7 +47,7 @@ const PRODUCTS_DATA: Product[] = [
     name: "Speaker 883 B",
     category: "Speaker",
     subCategory: "Powered Speaker",
-    image: "/powered-speaker.png",
+    image: "/products/speakers/powered-speaker.png",
     price: "Rp 949.000",
     description:
       "GMC 883 B dirancang khusus sebagai Speaker Multimedia Aktif bertenaga tinggi untuk kepuasan mendengarkan musik, menonton film, dan pesta rumahan dengan efek pencahayaan dinamis.",
@@ -85,7 +85,7 @@ const PRODUCTS_DATA: Product[] = [
     name: "Speaker 881 B",
     category: "Speaker",
     subCategory: "Compact Speaker",
-    image: "/compact-speaker.png",
+    image: "/products/speakers/compact-speaker.png",
     price: "Rp 549.000",
     description:
       "Soundbar GMC 881 B menghadirkan solusi audio teater rumah ringkas. Sangat pas diletakkan di bawah TV atau monitor komputer Anda tanpa memakan banyak tempat.",
@@ -103,7 +103,7 @@ const PRODUCTS_DATA: Product[] = [
     name: "Speaker 881 H",
     category: "Speaker",
     subCategory: "Multimedia Speaker",
-    image: "/multimedia-speaker.png",
+    image: "/products/speakers/multimedia-speaker.png",
     price: "Rp 799.000",
     description:
       "Dengan gaya vintage klasik berbalut kayu walnut premium, GMC 881 H adalah ornamen meja sekaligus pemutar musik berkualitas tinggi dengan kontrol bass & treble analog.",
