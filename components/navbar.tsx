@@ -132,11 +132,15 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="relative mt-4 w-64">
+        <div
+          onClick={handleSearchClick}
+          className="relative mt-4 w-64 cursor-pointer"
+        >
           <input
             type="text"
+            readOnly
             placeholder="Cari produk..."
-            className="w-full rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-white placeholder-white/40 transition-all duration-300 focus:border-white/30 focus:outline-none"
+            className="w-full cursor-pointer rounded-full border border-white/10 bg-white/5 px-5 py-2.5 text-sm text-white placeholder-white/40 transition-all duration-300 focus:outline-none"
           />
           <Search
             size={16}
